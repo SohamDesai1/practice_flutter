@@ -70,6 +70,31 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
+        bottomNavigationBar: BottomNavigationBar(
+          selectedFontSize: 0,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+                icon: Icon(Icons.home_filled),
+                label: "",
+                backgroundColor: Colors.black),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.search),
+                label: "",
+                backgroundColor: Colors.black),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.add_box_outlined),
+                label: "",
+                backgroundColor: Colors.black),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.movie_filter_outlined),
+                label: "",
+                backgroundColor: Colors.black),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.circle_outlined),
+                label: "",
+                backgroundColor: Colors.black),
+          ],
+        ),
       ),
     );
   }
