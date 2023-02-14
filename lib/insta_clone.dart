@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, duplicate_ignore
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,9 +20,9 @@ class MyApp extends StatelessWidget {
                 "Instagram",
               ),
               SizedBox(
-                width: 160,
+                width: 200,
               ),
-              Icon(Icons.add_box),
+              Icon(Icons.heart_broken_rounded),
               SizedBox(
                 width: 20,
               ),
@@ -31,71 +31,43 @@ class MyApp extends StatelessWidget {
           ),
         ),
         body: Container(
-          height: 100,
+          height: 105,
           color: Colors.black,
-          child: Row(
-            children: [
-              SizedBox(
-                width: 5,
-              ),
-              Column(
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [
-                  CircleAvatar(
-                    radius: 30,
-                    backgroundColor: Colors.blue,
-                    child: Text(
-                      "S",
-                      style: TextStyle(fontSize: 30),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: ListView.builder(
+              itemBuilder: (context, index) {
+                return Row(
+                  children: [
+                    SizedBox(
+                      width: 10,
                     ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                width: 5,
-              ),
-              CircleAvatar(
-                radius: 30,
-                backgroundColor: Colors.blue,
-                child: Text(
-                  "S",
-                  style: TextStyle(fontSize: 30),
-                ),
-              ),
-              SizedBox(
-                width: 5,
-              ),
-              CircleAvatar(
-                radius: 30,
-                backgroundColor: Colors.blue,
-                child: Text(
-                  "S",
-                  style: TextStyle(fontSize: 30),
-                ),
-              ),
-              SizedBox(
-                width: 5,
-              ),
-              CircleAvatar(
-                radius: 30,
-                backgroundColor: Colors.blue,
-                child: Text(
-                  "S",
-                  style: TextStyle(fontSize: 30),
-                ),
-              ),
-              SizedBox(
-                width: 5,
-              ),
-              CircleAvatar(
-                radius: 30,
-                backgroundColor: Colors.blue,
-                child: Text(
-                  "S",
-                  style: TextStyle(fontSize: 30),
-                ),
-              ),
-            ],
+                    Column(
+                      children: [
+                        // Padding(padding: EdgeInsets.only(top: 10)),
+                        CircleAvatar(
+                          radius: 35,
+                          backgroundColor: Colors.blue,
+                          child: Text(
+                            "S",
+                            style: TextStyle(fontSize: 30),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 3,
+                        ),
+                        Text(
+                          "soham32",
+                          style: TextStyle(color: Colors.white),
+                        )
+                      ],
+                    ),
+                  ],
+                );
+              },
+              itemCount: 10,
+              scrollDirection: Axis.horizontal,
+            ),
           ),
         ),
       ),
