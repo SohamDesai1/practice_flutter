@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
                 "Instagram",
               ),
               SizedBox(
-                width: 200,
+                width: 150,
               ),
               Icon(Icons.heart_broken_rounded),
               SizedBox(
@@ -30,43 +30,45 @@ class MyApp extends StatelessWidget {
             ],
           ),
         ),
-        body: Container(
-          height: 105,
-          color: Colors.black,
-          child: Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: ListView.builder(
-              itemBuilder: (context, index) {
-                return Row(
-                  children: [
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Column(
-                      children: [
-                        // Padding(padding: EdgeInsets.only(top: 10)),
-                        CircleAvatar(
-                          radius: 35,
-                          backgroundColor: Colors.blue,
-                          child: Text(
-                            "S",
-                            style: TextStyle(fontSize: 30),
+        body: SingleChildScrollView(
+          child: Container(
+            height: 105,
+            color: Colors.black,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return Row(
+                    children: [
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Column(
+                        children: [
+                          // Padding(padding: EdgeInsets.only(top: 10)),
+                          CircleAvatar(
+                            radius: 35,
+                            backgroundColor: Colors.blue,
+                            child: Text(
+                              "S",
+                              style: TextStyle(fontSize: 30),
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 3,
-                        ),
-                        Text(
-                          "soham32",
-                          style: TextStyle(color: Colors.white),
-                        )
-                      ],
-                    ),
-                  ],
-                );
-              },
-              itemCount: 10,
-              scrollDirection: Axis.horizontal,
+                          SizedBox(
+                            height: 3,
+                          ),
+                          Text(
+                            "soham32",
+                            style: TextStyle(color: Colors.white),
+                          )
+                        ],
+                      ),
+                    ],
+                  );
+                },
+                itemCount: 10,
+                scrollDirection: Axis.horizontal,
+              ),
             ),
           ),
         ),
@@ -96,6 +98,20 @@ class MyApp extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class Post extends StatelessWidget {
+  const Post({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 480,
+      width: double.infinity,
+      color: Colors.amberAccent,
+      child: Text(""),
     );
   }
 }
