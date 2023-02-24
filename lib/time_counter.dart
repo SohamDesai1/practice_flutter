@@ -89,7 +89,8 @@ class _TimeCounterState extends State<TimeCounter> {
               else
                 Text(
                     'Start Date:${DateFormat('yMd').format(start!)}   End Date: ${DateFormat('yMd').format(end!)}'),
-            Text('Difference: $diff')
+            Text('Difference in Days: $diff'),
+            Text('Difference in hours: ${diff * 24} hours')
           ],
         ),
       ),
