@@ -19,8 +19,9 @@ class BrokerageState extends State<Brokerage> {
   var quantity = TextEditingController();
   var buy = TextEditingController();
   var sell = TextEditingController();
-  var totalSell;
-  var totalBuy;
+  var totalSell, totalBuy;
+  var brokerage, sd, stt, etc, sebi, gst;
+  var totalTax, profit;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,11 +93,7 @@ class BrokerageState extends State<Brokerage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  var quantityVal = double.parse(quantity.text);
-                  var buyVal = double.parse(buy.text);
-                  var sellVal = double.parse(sell.text);
-                  totalSell = quantityVal * sellVal;
-                  totalBuy = quantityVal * buyVal;
+                  getBreakdown();
                 },
                 child: Text("Calculate"),
               ),
@@ -106,6 +103,28 @@ class BrokerageState extends State<Brokerage> {
       ),
     );
   }
-}
 
+  void getBreakdown() {
+    var quantityVal = double.parse(quantity.text);
+    var buyVal = double.parse(buy.text);
+    var sellVal = double.parse(sell.text);
+    totalSell = quantityVal * sellVal;
+    totalBuy = quantityVal * buyVal;
+    var b1 = (0.05 / 100) * totalSell;
+    var b2 = 20;
+    if (b1 > b2) {
+      brokerage = b2 * 2;
+    } else {
+      brokerage = b1 * 2;
+    }
+    stt = totalSell * (0.025 / 100);
+    sd = totalBuy * (0.003 / 100);
+    etc = (totalBuy * (0.00345 / 100)) + (totalSell * (0.00345 / 100));
+    sebi = (totalBuy * (0.0001 / 100)) + (totalSell * (0.0001 / 100));
+    gst = ((18 / 100) * brokerage) + ((18 / 100) * etc);
+    totalTax = brokerage + stt + sd + etc + sebi + gst;
+    profit = ((sellVal - buyVal) * quantityVal) - totalTax;
+    print(profit);
+  }
+}
 
