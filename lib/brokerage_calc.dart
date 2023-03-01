@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    const MaterialApp(home: Brokerage()),
+    const MaterialApp(debugShowCheckedModeBanner: false, home: Brokerage()),
   );
 }
 
@@ -26,7 +26,8 @@ class BrokerageState extends State<Brokerage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Groww Brokerage Calculator"),
+        toolbarHeight: 90,
+        title: Text("Groww Brokerage \nCalculator"),
       ),
       body: Center(
         child: SizedBox(
@@ -94,6 +95,19 @@ class BrokerageState extends State<Brokerage> {
               ElevatedButton(
                 onPressed: () {
                   getBreakdown();
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Display(
+                              stock: stock.text,
+                              totalTax: totalTax,
+                              profit: profit,
+                              brokerage: brokerage,
+                              stt: stt,
+                              etc: etc,
+                              sd: sd,
+                              gst: gst,
+                              sebi: sebi)));
                 },
                 child: Text("Calculate"),
               ),
@@ -124,7 +138,50 @@ class BrokerageState extends State<Brokerage> {
     gst = ((18 / 100) * brokerage) + ((18 / 100) * etc);
     totalTax = brokerage + stt + sd + etc + sebi + gst;
     profit = ((sellVal - buyVal) * quantityVal) - totalTax;
-    print(profit);
   }
 }
 
+class Display extends StatefulWidget {
+  const Display({
+    super.key,
+    required this.stock,
+    required this.totalTax,
+    required this.profit,
+    required this.brokerage,
+    required this.stt,
+    required this.etc,
+    required this.sd,
+    required this.gst,
+    required this.sebi,
+  });
+
+  final stock, totalTax, profit, brokerage, stt, sd, etc, sebi, gst;
+
+  @override
+  State<Display> createState() => _DisplayState();
+}
+
+class _DisplayState extends State<Display> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Stock Name : ${widget.stock}"),
+            Text("Total Charges : ${widget.totalTax}"),
+            Text("Total Profit : ${widget.profit}"),
+            Text("Brokerage : ${widget.brokerage}"),
+            Text("Settlement Charges : ${widget.stt}"),
+            Text("Stamp Duty : ${widget.sd}"),
+            Text("Exchange Charges : ${widget.etc}"),
+            Text("SEBI Charges : ${widget.sebi}"),
+            Text("GST : ${widget.gst}"),
+          ],
+        ),
+      ),
+    );
+  }
+}
