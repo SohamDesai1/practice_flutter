@@ -171,7 +171,7 @@ class _DisplayState extends State<Display> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("Stock Name : ${widget.stock}"),
-            Text("Total Charges : ${widget.totalTax}"),
+            Text("Total Charges applied : ${widget.totalTax}"),
             Text("Total Profit : ${widget.profit}"),
             Text("Brokerage : ${widget.brokerage}"),
             Text("Settlement Charges : ${widget.stt}"),
