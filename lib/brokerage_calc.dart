@@ -178,7 +178,7 @@ class _DisplayState extends State<Display> {
             Text("Stamp Duty : ${widget.sd}"),
             Text("Exchange Charges : ${widget.etc}"),
             Text("SEBI Charges : ${widget.sebi}"),
-            Text("GST : ${widget.gst}"),
+            Text("GST Charges: ${widget.gst}"),
           ],
         ),
       ),
